@@ -18,6 +18,7 @@ export type PostType = {
   userId?: number;
   userFirstName?: string;
   isLiked?: boolean;
+  likes?: number;
 };
 
 export type LikeType = {
