@@ -17,6 +17,7 @@ export type PostType = {
   createdAt?: number;
   userId?: number;
   userFirstName?: string;
+  isLiked?: boolean;
 };
 
 export type LikeType = {

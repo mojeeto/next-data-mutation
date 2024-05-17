@@ -1,6 +1,16 @@
-export default function LikeButton() {
+"use client";
+
+import { togglePostLikeStatus } from "@/actions/posts";
+import { useState } from "react";
+
+export default function LikeButton({ postId }: { postId: number | string }) {
   return (
-    <button className="like-button">
+    <button
+      className="like-button"
+      onClick={async () => {
+        await togglePostLikeStatus(postId);
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

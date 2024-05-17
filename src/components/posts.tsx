@@ -19,8 +19,8 @@ function Post({ post }: { post: PostType }) {
               </time>
             </p>
           </div>
-          <div>
-            <LikeButton />
+          <div className={post.isLiked! ? "liked" : ""}>
+            <LikeButton postId={post.id} />
           </div>
         </header>
         <p>{post.content}</p>
