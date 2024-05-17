@@ -2,16 +2,12 @@
 
 import { useFormState } from "react-dom";
 import FormSubmit from "./form-submit";
+import { createPost } from "@/actions/posts";
 
-export default function PostForm({
-  action,
-}: {
-  action: (
-    state: { errors: string[] },
-    formData: FormData,
-  ) => Promise<{ errors: string[] }>;
-}) {
-  const [state, formAction] = useFormState(action, { errors: [] });
+export default function PostForm() {
+  const [state, formAction] = useFormState(createPost, {
+    errors: [],
+  });
   return (
     <>
       <h1>Create a new post</h1>
