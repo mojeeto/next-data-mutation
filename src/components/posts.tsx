@@ -31,7 +31,7 @@ function Post({
           </div>
           <div>
             <form
-              action={action.bind(null, post.id)}
+              action={action.bind(null, post.id!)}
               className={post.isLiked! ? "liked" : ""}
             >
               <LikeButton />
@@ -58,8 +58,9 @@ export default function Posts({ posts }: { posts: PostType[] }) {
       }
 
       const updatedPost = { ...prevPosts[updatedPostIndex] };
-      updatedPost.likes = updatedPost.likes + (updatedPost.isLiked ? -1 : 1);
-      updatedPost.isLiked = !updatedPost.isLiked;
+      if (!updatedPost) return prevPosts;
+      updatedPost.likes = updatedPost.likes! + (updatedPost.isLiked! ? -1 : 1);
+      updatedPost.isLiked = !updatedPost.isLiked!;
 
       const newPosts = [...prevPosts];
       newPosts[updatedPostIndex] = updatedPost;
@@ -71,7 +72,7 @@ export default function Posts({ posts }: { posts: PostType[] }) {
     return <p>There are no posts yet. Maybe start sharing some?</p>;
   }
 
-  async function updatePost(postId) {
+  async function updatePost(postId: number | string) {
     updateOptimisticPosts(postId);
     await togglePostLikeStatus(postId);
   }
