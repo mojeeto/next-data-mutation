@@ -17,7 +17,18 @@ function Post({
   return (
     <article className="post">
       <div className="post-image">
-        <Image src={post.imageUrl} fill alt={post.title} />
+        <Image
+          src={post.imageUrl}
+          width={200}
+          height={120}
+          alt={post.title}
+          quality={50}
+          loader={(config) => {
+            const [urlStart, urlEnd] = config.src.split("upload/");
+            const transformation = `w_200,q_${config.quality}`;
+            return `${urlStart}upload/${transformation}/${urlEnd}`;
+          }}
+        />
       </div>
       <div className="post-content">
         <header>
