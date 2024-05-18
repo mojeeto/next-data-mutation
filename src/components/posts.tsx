@@ -5,6 +5,7 @@ import LikeButton from "./like-icon";
 import { PostType } from "@/lib/posts";
 import { useOptimistic } from "react";
 import { togglePostLikeStatus } from "@/actions/posts";
+import Image from "next/image";
 
 function Post({
   post,
@@ -16,7 +17,7 @@ function Post({
   return (
     <article className="post">
       <div className="post-image">
-        <img src={post.imageUrl} alt={post.title} />
+        <Image src={post.imageUrl} fill alt={post.title} />
       </div>
       <div className="post-content">
         <header>
